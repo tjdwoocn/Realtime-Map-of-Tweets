@@ -8,13 +8,15 @@
 
 ### Twitter Developer Website
 - [트위터 개발자 페이지](https://developer.twitter.com/) 접속후 가입하기      
-![screenshot](RMT_img/screenshot01.png)    
-![screenshot](RMT_img/screenshot02.png)   
-- (기존 트위터 아이디 사용)(곧 개발자 어카운트 등록해줘야함...)   
-![screenshot](RMT_img/screenshot03.png)    
-![screenshot](RMT_img/screenshot04.png)     
-![screenshot](RMT_img/screenshot05.png)    
-![screenshot](RMT_img/screenshot06.png)   
+    
+  ![screenshot](RMT_img/screenshot01.png)    
+  ![screenshot](RMT_img/screenshot02.png)   
+- (기존 트위터 아이디 사용)(곧 개발자 어카운트 등록해줘야함...) 
+      
+  ![screenshot](RMT_img/screenshot03.png)    
+  ![screenshot](RMT_img/screenshot04.png)     
+  ![screenshot](RMT_img/screenshot05.png)    
+  ![screenshot](RMT_img/screenshot06.png)   
 - 'app' 을 만들고 api 사용을 위해 개발자 어카운트 등록해야 함
 - 트위터 자체적으로 몇가지 질문을 함(영문)
 - 트위터 API를 사용하는 이유와 어떻게 사용할것인지 등을 물음 (신선하다)
@@ -22,16 +24,20 @@
 ---
 ### Create an App, API Key and Tokens
 - 계정생성 후 'Create an app' 버튼 클릭
-![screenshot](RMT_img/screenshot07.png)
+    
+  ![screenshot](RMT_img/screenshot07.png)
 - 이것저것 또 기입하기...(참 다양한 데이터를 쌓는구나)
-![screenshot](RMT_img/screenshot08.png)   
-  - app 생성완료
-  - 'Generate' 버튼 클릭하여 access token/secret 생성
+
+  ![screenshot](RMT_img/screenshot08.png)   
+    - app 생성완료
+    - 'Generate' 버튼 클릭하여 access token/secret 생성       
 
 - API 키와 토큰 확인
-![screenshot](RMT_img/screenshot09.png)     
+      
+  ![screenshot](RMT_img/screenshot09.png)     
 - 'credential.py' 파일로 따로 저장
-![screenshot](RMT_img/screenshot10.png)     
+      
+  ![screenshot](RMT_img/screenshot10.png)     
   - 위와 같이 작성 뒤 발급받은 키와 토큰내용 저장
 ---
 
@@ -39,7 +45,8 @@
 > Python으로 트위터 api를 사용하기 편하게 해주는 library인 'Tweepy' 설치 및 기본설정 해주기
 
 - [Tweepy](https://www.tweepy.org/) 페이지
-![screenshot](RMT_img/screenshot11.png)       
+
+  ![screenshot](RMT_img/screenshot11.png)              
 
 - 프롬프트 창에서 아래 커맨드 실행
   ```linux
@@ -123,6 +130,7 @@
 - 'tweet.jason' 파일 생성
 - [Json Formatter & Validator](https://jsonformatter.curiousconcept.com/) 을 활용하여 위에 출력된 로그를 '정렬된' Json 형태로 확인하기
 - 위 로그 복/붙 한 후 'proceed' 버튼 클릭 하면 아래와 같이 정렬시켜 줌
+  
   ![screenshot](RMT_img/screenshot17.png)          
   ![screenshot](RMT_img/screenshot18.png)          
   ![screenshot](RMT_img/screenshot19.png)          
@@ -144,21 +152,25 @@
 
 ### 트윗에서 위치정보 가져오기
 - 모바일앱을 사용해 다시 트윗하는데 그때 위치정보 또한 추가해주기   
-![screenshot](RMT_img/screenshot21.png)
-![screenshot](RMT_img/screenshot22.png)
+  
+  ![screenshot](RMT_img/screenshot21.png)
+  ![screenshot](RMT_img/screenshot22.png)
 
 - 저번 시간에 했던것처럼 잘 정렬된 JSON 형태로 변환 후 위치데이터 확인하기
 
 - [JSON Formatter&Validator](https://jsonformatter.curiousconcept.com/) 사용
+  
   ![screenshot](RMT_img/screenshot23.png)
   ![screenshot](RMT_img/screenshot24.png)
 
-- tweet.json 파일에서 위치정보 확인
+- tweet.json 파일에서 위치정보 확인   
+  
   ![screenshot](RMT_img/screenshot25.png)   
   - 'Place' 태그의 'Coordinates' 태그 안에서 위치정보 확인 가능
 
 - 해당 좌표 위치 확인해보기
 1. [구글맵](https://www.google.co.kr/maps) 사용함 (네이버지도, 카카오맵 또한 사용가능할듯)
+   
     ![screenshot](RMT_img/screenshot26.png)   
 2. [Latitude and Longitude Finder](https://www.latlong.net/Show-Latitude-Longitude.html) 또한 사용가능 (하루제한량 생김)
   

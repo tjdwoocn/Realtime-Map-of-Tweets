@@ -4,7 +4,8 @@
 ## 카프카로 트윗정보 전송
 - 이번 파트에선 아래 표시된 부분까지 진행
 * 아키텍처 구상도
-![screenshot](RMT_img/screenshot27.png)
+    
+  ![screenshot](RMT_img/screenshot27.png)
   1. 파이썬을 사용해 트윗정보를 가져옴
   2. 해당 정보를 kafka에 전송
 
@@ -72,14 +73,15 @@ class MyStreamListener(StreamListener):
 kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic twitterdata --from-beginning
 ```
 - Consumer console 실행   
-![screenshot](RMT_img/screenshot32.png)     
+    
+  ![screenshot](RMT_img/screenshot32.png)     
   - 현재는 아무 메세지 없음 
 
+- 수정된 'twitter.py' 파일 실행   
 
-- 수정된 'twitter.py' 파일 실행
-![screenshot](RMT_img/screenshot33.png) 
-  - 'twitter.py' 가 실행중인 프롬프트와 컨슈머가 실행중인 프롬프트 창 둘 모두에서 메세지 생성 확인가능!
-
+  ![screenshot](RMT_img/screenshot33.png) 
+    - 'twitter.py' 가 실행중인 프롬프트와 컨슈머가 실행중인 프롬프트 창 둘 모두에서 메세지 생성 확인가능!
+                      
 
 ### 'PLACE' 데이터를 가진 트윗만 기져오기
 - class 부분만 수정, 'place' 데이터가 없는 트윗은 consume 하지 않음
@@ -110,16 +112,18 @@ class MyStreamListener(StreamListener):
 
 ## 번외
 - 카프카 서버 실행을 하는 도중 아래와 같은 에러 발생
-![screenshot](RMT_img/screenshot28.png)   
+    
+  ![screenshot](RMT_img/screenshot28.png)   
 
 - 검색해보니 log 파일에 문제가 생긴듯함
 - zookeeper를 정리해줘야 한다고 함
   - 기존의 log 데이터들은 공부한다고 생성했던, 지워도 되는 데이터라 다 지우고 다시 시작함... 마침 용량도 모자라던 참이었던지라.. 잘됬다 생각함
 
 - Stack Overflow 에서 해당자료 참고
-![screenshot](RMT_img/screenshot29.png)   
+  
+  ![screenshot](RMT_img/screenshot29.png)   
 
-![screenshot](RMT_img/screenshot30.png)   
-- 잘 실행됨 (휴우...)
+  ![screenshot](RMT_img/screenshot30.png)   
+  - 잘 실행됨 (휴우...)
 
 
