@@ -24,7 +24,7 @@ class MyStreamListener(StreamListener):
             # 카프카 클라이언트를 client 변수에 리턴
             client = get_kafka_client()
             # 'twitterdata' 토픽 호출
-            topic = client.topics['twitterdata']
+            topic = client.topics['twitterdata'] 
             # 해당 토픽에 데이터 produce 해주는 producer 생성
             producer = topic.get_sync_producer()
             # message 말고 data를 가져온 이유는 json형태로 load 된 것 말고 오리지널 데이터를 가져오기 위해
@@ -45,4 +45,6 @@ if __name__ == "__main__":
     listener = MyStreamListener()
     Stream = Stream(auth, listener)
     # 해당 단어가 들어가는 tweet들 stream
-    Stream.filter(track=['PythonSJ'])
+    # Stream.filter(track=['python'])
+    # 아래의 locations 옵션은 전세계의 모든 tweets 를 확인하는 방법
+    Stream.filter(locations=[-180,-90,180,90])

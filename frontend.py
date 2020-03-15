@@ -11,15 +11,19 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return('LEAFLET MAP')
+    # 웹화면에 보여줄 front (index.html) 작업 후 호출
+    return(render_template('index.html'))
 
 @app.route('/topic/<topicname>')
 # 바로 위에서 가져온 topicname 넣어주기
 def get_messages(topicname):
     client = get_kafka_client()
+    # events 가 생성될 때 마다 client(broker)가 새로운 메세지를 consume 하도록
     def events():
-        for 
-
+        for message in client.topics[topicname].get_simple_consumer():
+            # return 말고 generate 사용해야함 (yield)
+            yield 'data:{0}\n\n'.format(message.value.decode())
+    return (Response(events(), mimetype='text/event-stream'))
 
 if __name__ =='__main__':
     # debug 부분을 True라고 해주면 위의 index 부분을 수정해줬을때 
