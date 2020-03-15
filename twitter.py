@@ -4,6 +4,12 @@ from tweepy.streaming import StreamListener
 from tweepy import OAuthHandler
 from tweepy import Stream
 import credentials
+from pykafka import KafkaClient
+import json
+
+# 카프카 클라이언트(broker)를 리턴하는 함수
+def get_kafka_client():
+    return KafkaClient(hosts = '127.0.0.1:9092')
 
 # override tweepy.StreamListener to add logic to on_status
 # 오버라이딩 함
@@ -11,6 +17,18 @@ class MyStreamListener(StreamListener):
     # 모든 메세지를 가져오는 'on_data' method 사용
     def on_data(self, data):
         print(data)
+        # data 를 json 포맷으로 변경
+        message = json.loads(data)
+        # Place 태그에 데이터가 있는것만 가져오기
+        if message['place'] is not None:
+            # 카프카 클라이언트를 client 변수에 리턴
+            client = get_kafka_client()
+            # 'twitterdata' 토픽 호출
+            topic = client.topics['twitterdata']
+            # 해당 토픽에 데이터 produce 해주는 producer 생성
+            producer = topic.get_sync_producer()
+            # message 말고 data를 가져온 이유는 json형태로 load 된 것 말고 오리지널 데이터를 가져오기 위해
+            producer.produce(data.encode('utf8')) # 카프카 데이터는 byte로 나오기 떄문에 encode 필요
         return True
 
     # 오류메세지 출력

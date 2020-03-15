@@ -137,3 +137,30 @@
     - 트윗내용 보면 지역 태그가 없음    
   --> 추가해줘야 함
 
+---
+
+## 트윗에서 위치정보 가져오기
+> 트윗에 위치정보를 추가해주고 해당 데이터를 JSON 형태로 다시 추출하기
+
+### 트윗에서 위치정보 가져오기
+- 모바일앱을 사용해 다시 트윗하는데 그때 위치정보 또한 추가해주기   
+![screenshot](RMT_img/screenshot21.png)
+![screenshot](RMT_img/screenshot22.png)
+
+- 저번 시간에 했던것처럼 잘 정렬된 JSON 형태로 변환 후 위치데이터 확인하기
+
+- [JSON Formatter&Validator](https://jsonformatter.curiousconcept.com/) 사용
+  ![screenshot](RMT_img/screenshot23.png)
+  ![screenshot](RMT_img/screenshot24.png)
+
+- tweet.json 파일에서 위치정보 확인
+  ![screenshot](RMT_img/screenshot25.png)   
+  - 'Place' 태그의 'Coordinates' 태그 안에서 위치정보 확인 가능
+
+- 해당 좌표 위치 확인해보기
+1. [구글맵](https://www.google.co.kr/maps) 사용함 (네이버지도, 카카오맵 또한 사용가능할듯)
+    ![screenshot](RMT_img/screenshot26.png)   
+2. [Latitude and Longitude Finder](https://www.latlong.net/Show-Latitude-Longitude.html) 또한 사용가능 (하루제한량 생김)
+  
+
+---> 2편으로~
