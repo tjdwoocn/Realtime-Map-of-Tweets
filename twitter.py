@@ -6,12 +6,14 @@ from tweepy import Stream
 import credentials
 from pykafka import KafkaClient
 import json
+import sys
 
 # 카프카 클라이언트(broker)를 리턴하는 함수
 def get_kafka_client():
     return KafkaClient(hosts = '127.0.0.1:9092')
 
 # override tweepy.StreamListener to add logic to on_status
+words = ['python', 'corona']
 # 오버라이딩 함
 class MyStreamListener(StreamListener):
     # 모든 메세지를 가져오는 'on_data' method 사용
@@ -19,6 +21,7 @@ class MyStreamListener(StreamListener):
         print(data)
         # data 를 json 포맷으로 변경
         message = json.loads(data)
+        print(message)
         # Place 태그에 데이터가 있는것만 가져오기
         if message['place'] is not None:
             # 카프카 클라이언트를 client 변수에 리턴
@@ -30,6 +33,7 @@ class MyStreamListener(StreamListener):
             # message 말고 data를 가져온 이유는 json형태로 load 된 것 말고 오리지널 데이터를 가져오기 위해
             producer.produce(data.encode('utf8')) # 카프카 데이터는 byte로 나오기 떄문에 encode 필요
         return True
+
 
     # 오류메세지 출력
     def on_error(self, status):
@@ -45,6 +49,6 @@ if __name__ == "__main__":
     listener = MyStreamListener()
     Stream = Stream(auth, listener)
     # 해당 단어가 들어가는 tweet들 stream
-    # Stream.filter(track=['python'])
     # 아래의 locations 옵션은 전세계의 모든 tweets 를 확인하는 방법
-    Stream.filter(locations=[-180,-90,180,90])
+    # Stream.filter(locations=[-180,-90,180,90])
+    Stream.filter(track=['python'])
