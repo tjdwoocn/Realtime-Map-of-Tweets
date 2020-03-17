@@ -50,5 +50,5 @@ if __name__ == "__main__":
     Stream = Stream(auth, listener)
     # 해당 단어가 들어가는 tweet들 stream
     # 아래의 locations 옵션은 전세계의 모든 tweets 를 확인하는 방법
-    # Stream.filter(locations=[-180,-90,180,90])
-    Stream.filter(track=['python'])
+    Stream.filter(locations=[-180,-90,180,90])
+    # Stream.filter(track=['python'])
